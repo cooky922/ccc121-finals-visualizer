@@ -4,9 +4,6 @@ import {
   Play, SkipForward, ZoomIn, ZoomOut, Maximize, HelpCircle, 
   X, Network } from 'lucide-react';
 import './index.css';
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-// import './App.css'
 
 // Custom Hook for Step-by-Step Animation
 const useStepper = () => {
@@ -67,9 +64,9 @@ const App = () => {
 
   // Syntax help per tab
   const syntaxMap = {
-    queue: ["enqueue [v]...", "dequeue", "peek_front", "peek_rear", "clear"],
-    bst: ["insert [v]...", "search [v]", "peek_min", "peek_max", "remove [v]", "clear", "preorder", "inorder", "postorder", "levelorder"],
-    heap: ["create [v]...", "insert [v]...", "peek_max", "remove_max", "clear", "preorder", "inorder", "postorder", "levelorder"]
+    queue: ["enqueue [values]...", "dequeue", "peek_front", "peek_rear", "clear"],
+    bst: ["insert [values]...", "search [value]", "peek_min", "peek_max", "remove [value]", "clear", "preorder", "inorder", "postorder", "levelorder"],
+    heap: ["create [values]...", "insert [values]...", "peek_max", "remove_max", "clear", "preorder", "inorder", "postorder", "levelorder"]
   };
 
   return (
@@ -451,7 +448,7 @@ const QueueVisualizer = () => {
         switch (command) {
         case 'enqueue':
             if (args.length === 0) {
-                addLog("Usage: enqueue [v]...", 'error');
+                addLog("Usage: enqueue [values]...", 'error');
             } else {
                 let currentQ = [...queue];
                 setStatusData({ label: 'Inserting', items: args, activeIndex: -1, type: 'array' });
@@ -470,7 +467,7 @@ const QueueVisualizer = () => {
             break;
         case 'dequeue':
             if (queue.length === 0) {
-                addLog("Queue empty", 'error');
+                addLog("Queue is empty", 'error');
             } else {
                 setHighlightIdx(0);
                 setHighlightColor('red');
@@ -627,7 +624,7 @@ const BSTVisualizer = () => {
       switch (command) {
         case 'insert':
           if (args.length === 0) {
-            addLog("Usage: insert [v]...", 'error');
+            addLog("Usage: insert [values]...", 'error');
             break;
           }
           let tempRoot = cloneTree(root);
